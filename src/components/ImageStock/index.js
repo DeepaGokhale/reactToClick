@@ -7,16 +7,7 @@ function ImageStock(props) {
             <div className="img-container shuffle">
                 <img alt={props.name} src={props.image} onClick={() => 
                 {
-                    if(props.clicked)
-                    {
-                        //Set everything original
-                    }
-                    else
-                    {
-                        props.clicked = true;
-                        props.handleIncrement();
-                    }
-                    props.shuffleImages()
+                    props.clickHandler()
                 }} />
             </div>       
         </div>
