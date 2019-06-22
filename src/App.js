@@ -4,7 +4,7 @@ import Wrapper from "./components/Wrapper";
 import Panel from "./components/Panel";
 import images from "./images.json";
 import shuffle from "./Shuffle"
-import Shake from "react-shake-effect"
+// import Shake from "react-shake-effect"
 
 // import Content from "./components/Content";
 import './App.css';

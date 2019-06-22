@@ -5,8 +5,8 @@ function Panel(props) {
     // <div className = "header"> {props.children} </div>
     return (
         <div class="panel panel-default">
-          <div class="panel-heading"><h1 class="left">Best Score:</h1><h1 class="right">Score:</h1></div>
-          <div class="panel-body"><h1 class="left">{props.bestScore}</h1><h1 class="right">{props.score}</h1></div>
+          <div className="panel-heading"><h1 className="left">Best Score:</h1><h1 className="right">Score:</h1></div>
+          <div className="panel-body"><h1 className="left">{props.bestScore}</h1><h1 className="right">{props.score}</h1></div>
         </div>
       );
     }
