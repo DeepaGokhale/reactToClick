@@ -1,8 +1,10 @@
 import React from 'react';
 import ImageStock from "./components/ImageStock";
 import Wrapper from "./components/Wrapper";
+import Panel from "./components/Panel";
 import images from "./images.json";
 import shuffle from "./Shuffle"
+import Shake from "react-shake-effect"
 
 // import Content from "./components/Content";
 import './App.css';
@@ -12,6 +14,10 @@ class App extends React.Component{
     imagesList: images
   }
 
+  componentDidMount() {
+    this.score = 0;
+    this.bestscore = 0;
+  }
 
   shuffleImages = () => {
     let imgArr = shuffle(this.state.imagesList);
@@ -20,21 +26,22 @@ class App extends React.Component{
   }
 
   handleIncrement = () => {
-    //console.log( 1 + 1);
-    this.setState({ count: this.state.count + 1 });
+    // console.log( this.state.score);
+    this.setState({ count: this.state.score + 1 });
   };
 
   resetArray()
   {
     let imgArr = this.state.imagesList;
     let resetArr = [] ;
+    //set all the items in array to Clicked=  false
     imgArr.forEach(img => {
       let item = {id: img.id, image: img.image, clicked: false};
       resetArr.push(item);      
     });
     imgArr = shuffle(resetArr);
     this.setState({imagesList: imgArr});   
-    console.log(imgArr);
+    //console.log(imgArr);
   }
 
   //Click handler decides the score and also shuffles the cards on click event
@@ -43,8 +50,10 @@ class App extends React.Component{
     //console.log(img);
     if(img.clicked)
     {
+      // Wrapper.  animation: shake 0.5s; 
       //set the score to 0 and set all the images clicked to false(in other workds load the original images list)
-      this.Score = 0;   
+      this.setState({bestscore:( (this.state.score > this.state.bestscore) ? this.state.score : this.state.bestscore) });
+      this.setState({score: 0});   
       this.resetArray();
     }
     else  // false so increse the score by 1
@@ -69,7 +78,8 @@ class App extends React.Component{
 
   render() {
     //console.log(this.state.imagesList);
-    return (
+    return (      
+      <div>
       <Wrapper>
         { this.state.imagesList.map((image, i) => (
             <ImageStock
@@ -85,8 +95,11 @@ class App extends React.Component{
           )
         }
       </Wrapper>
+      <Panel bestscore={this.state.bestscore}  score={this.state.score} /> 
+      </div>
     );
   }
 }
 
 export default App;
+

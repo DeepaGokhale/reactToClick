@@ -13,8 +13,8 @@
 }
 
 #mainMenu{
-    margin-left: 17%;
-    color: blueviolet;
+    margin-left: 30%;
+    color: #060668;
     font-weight: bolder;
     margin-bottom: 5%;
     margin-top: 10%;
@@ -25,3 +25,11 @@
       margin-bottom: 0%;
       color: #ffffff;
   }
+
+.panelMain{
+    background-color: #ffffff;
+}
+
+.faq{
+    padding-top: 60px;
+}

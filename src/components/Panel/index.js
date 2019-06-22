@@ -1,18 +1,15 @@
 import React from "react";
-import "./Header.css";
+import "./Panel.css";
 
-function Header(props) {
+function Panel(props) {
     // <div className = "header"> {props.children} </div>
     return (
-        <div className="jumbotron text-center">
-          <h1>React Recipes</h1>
-          {/* <a target="_blank" rel="noopener noreferrer" href="http://www.recipepuppy.com/about/api/">
-            Powered by Recipe Puppy
-          </a> */}
+        <div class="panel panel-default">
+          <div class="panel-heading"><h1 class="left">Best Score:</h1><h1 class="right">Score:</h1></div>
+          <div class="panel-body"><h1 class="left">{props.bestScore}</h1><h1 class="right">{props.score}</h1></div>
         </div>
       );
     }
-
 
 //     <div class="jumbotron-fluid d-flex justify-content-center text-white rounded bg-dark">
 //           <div class="col col-lg-2">
@@ -44,6 +41,6 @@ function Header(props) {
 //       </div>
 // }
 
-export default Header;
+export default Panel;
 
 
