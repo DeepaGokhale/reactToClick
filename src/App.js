@@ -15,40 +15,61 @@ class App extends React.Component{
 
   shuffleImages = () => {
     let imgArr = shuffle(this.state.imagesList);
-    // console.log(imgArr);
+    //console.log(imgArr);
     this.setState({imagesList: imgArr});
   }
 
   handleIncrement = () => {
-    console.log( 1 + 1);
+    //console.log( 1 + 1);
     this.setState({ count: this.state.count + 1 });
   };
 
+  resetArray()
+  {
+    let imgArr = this.state.imagesList;
+    let resetArr = [] ;
+    imgArr.forEach(img => {
+      let item = {id: img.id, image: img.image, clicked: false};
+      resetArr.push(item);      
+    });
+    imgArr = shuffle(resetArr);
+    this.setState({imagesList: imgArr});   
+    console.log(imgArr);
+  }
+
   //Click handler decides the score and also shuffles the cards on click event
-  clickHandler = () => {
+  clickHandler = (e, img) => {
     //if true means already clicked
-    if(this.clicked)
-      {
-        //set the score to 0 and set all the images clicked to false(in other workds load the original images list)
-        this.Score = 0;
-        let imgArray = this.state.imagesList;
-        imgArray.forEach = img => img.clicked = false;
-        console.log(imgArray);
-        this.shuffleImages();
-      }
-      else  // false so increse the score by 1
-      {
-        this.setState({clicked: true});
-        // this.setState({clicked: true});
-        this.handleIncrement();
-        this.shuffleImages();
-      }
+    //console.log(img);
+    if(img.clicked)
+    {
+      //set the score to 0 and set all the images clicked to false(in other workds load the original images list)
+      this.Score = 0;   
+      this.resetArray();
+    }
+    else  // false so increse the score by 1
+    {
+      let newList = this.state.imagesList;
+      //console.log("new List:");
+      let updList = newList.filter(image => image.id !== img.id);
+      //console.log("Updt List:" , updList);
+      //set the new item with clicked = true
+      let imageClicked = { id: img.id, image: img.image, clicked: true };
+      console.log(imageClicked.id);
+      // //add the item to the array
+      updList.push(imageClicked);      
+      //set the new array
+      console.log(updList);
+      this.setState({imagesList: updList});          
+      //console.log(imgArr);
+      this.handleIncrement();
+    }
       //regardless images are shuffled
 
   }
 
   render() {
-    console.log(this.state.imagesList);
+    //console.log(this.state.imagesList);
     return (
       <Wrapper>
         { this.state.imagesList.map((image, i) => (
