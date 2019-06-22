@@ -8,13 +8,13 @@ function Shuffle(images){
     var randomArr = [];
   
     //create a random array with 50 nos
-    for (let m = 0; m < 12; m++)
+    for (let m = 0; m < images.length; m++)
     {
         arr.push(m);
-        for (let x = 0; x < 12; x++)
+        for (let x = 0; x < images.length; x++)
         {
             arr.push(x);
-            for (let y = 0; y < 12; y++)
+            for (let y = 0; y < images.length; y++)
             {
                 arr.push(y);
             }
@@ -27,22 +27,20 @@ function Shuffle(images){
     {
         let r = Math.floor(Math.random() * (arr.length-1)); //any number for array index fr arr
         // console.log(r);
-        let c = arr[r]; // new random number between 1-12
+        let c = arr[r]; // new random number between 1-(imahes.length)
         //console.log(randomArr);
-        if (!randomArr.includes(c) && randomArr.length < 13)
+        if (!randomArr.includes(c) && randomArr.length < (images.length + 1))
         {
           randomArr.push(c); //arr that keeps the ids for images
           imgArr.push(images[c]);
         }
-        else if(randomArr.length >= 13)
+        else if(randomArr.length >= images.length)
         {
           return imgArr;
         }      
     }
     //console.log(imgArr);
     return imgArr;
-    // console.log(randomArr);
-    //return this.setState({imagesList: imgArr});
   }
 
   export default Shuffle;

@@ -65,7 +65,6 @@ class App extends React.Component{
       this.handleIncrement();
     }
       //regardless images are shuffled
-
   }
 
   render() {

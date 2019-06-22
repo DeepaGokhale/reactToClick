@@ -13,30 +13,12 @@
 }
 
 #mainMenu{
-    margin-left: 20%;
+    margin-left: 17%;
     color: blueviolet;
     font-weight: bolder;
     margin-bottom: 5%;
     margin-top: 10%;
 }
-
-.right{
-    float: right;
-    padding-top: 25px;
-}
-
-.left{
-    float: left;
-    padding-top: 25px;
-}
-
-#choice{
-    color: rgb(235, 206, 133);
-}
-
-#content{
-      margin-left: 15%;
-  }
 
   #copyright{
       margin-top:100px;
