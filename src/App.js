@@ -10,13 +10,10 @@ import shuffle from "./Shuffle"
 import './App.css';
 
 class App extends React.Component{
-  state = {
-    imagesList: images
-  }
 
-  componentDidMount() {
-    this.score = 0;
-    this.bestscore = 0;
+  state = {
+    imagesList: images,
+    score: 0
   }
 
   shuffleImages = () => {
@@ -27,8 +24,12 @@ class App extends React.Component{
 
   handleIncrement = () => {
     // console.log( this.state.score);
-    this.setState({ count: this.state.score + 1 });
+    this.setState({ score: this.state.score + 1 });
   };
+
+    // const [count, setCount] = this.setState({count: 0});
+    // const incrementCount = () => setCount( count + 1 );
+
 
   resetArray()
   {
@@ -52,12 +53,14 @@ class App extends React.Component{
     {
       // Wrapper.  animation: shake 0.5s; 
       //set the score to 0 and set all the images clicked to false(in other workds load the original images list)
-      this.setState({bestscore:( (this.state.score > this.state.bestscore) ? this.state.score : this.state.bestscore) });
-      this.setState({score: 0});   
+      this.setState({bestScore:( (this.state.score > this.state.bestScore) ? this.state.score : this.state.bestScore) });
+      localStorage.setItem("bestScore", this.state.bestScore);
+      this.setState({score: 0});  
       this.resetArray();
     }
     else  // false so increse the score by 1
     {
+      this.handleIncrement();
       let newList = this.state.imagesList;
       //console.log("new List:");
       let updList = newList.filter(image => image.id !== img.id);
@@ -70,8 +73,7 @@ class App extends React.Component{
       //set the new array
       console.log(updList);
       this.setState({imagesList: updList});          
-      //console.log(imgArr);
-      this.handleIncrement();
+      //console.log(imgArr);      
     }
       //regardless images are shuffled
   }
@@ -89,13 +91,13 @@ class App extends React.Component{
               clicked = {image.clicked}
               clickHandler = {this.clickHandler}
               // shuffleImages = {this.shuffleImages}
-              // handleIncrement = {this.handleIncrement}
+              // handleIncrement = {scoreIncrement}
               />
             )
           )
         }
       </Wrapper>
-      <Panel bestscore={this.state.bestscore}  score={this.state.score} /> 
+      <Panel bestScore={this.state.bestScore}  score={this.state.score} /> 
       </div>
     );
   }
