@@ -1,12 +1,24 @@
 import React from "react";
 import "./Panel.css";
 
+// componentDidMount() {
+//   this.score = 0;
+//   this.bestscore = 0;
+// }
+
+// handleIncrement increments this.state.count by 1
+// handleIncrement = () => {
+//   // We always use the setState method to update a component's state
+//   this.setState({ count: this.state.count + 1 });
+// };
+
 function Panel(props) {
+
     // <div className = "header"> {props.children} </div>
     return (
-        <div class="panel panel-default">
-          <div className="panel-heading"><h1 className="left">Best Score:</h1><h1 className="right">Score:</h1></div>
-          <div className="panel-body"><h1 className="left">{props.bestScore}</h1><h1 className="right">{props.score}</h1></div>
+        <div className="panel panel-default">
+          <div className="panel-heading"><h1 className="left">Best Score: {props.bestScore}</h1><h1 className="right">Score: {props.score}</h1></div>
+          {/* <div className="panel-body"><h1 className="left">{props.bestScore}</h1><h1 className="right">{props.score}</h1></div> */}
         </div>
       );
     }
